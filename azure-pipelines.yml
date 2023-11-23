@@ -1,9 +1,5 @@
-trigger:
-  - main
-pool:
-    vmImage: ubuntu-latest
-variables:
-    buildConfiguration: 'Release'
-steps:
-- scrpit: dotnet build --configuration $(buildConfiguration)
-  display:'dotnet build $(buildConfiguration)'
+task: DotNetCoreCLI@2
+  displayName:'Build the project'
+  inputs:command:'build'
+    arguments:'--no-restore --configuration Release'
+    projects:'**/*.csproj'
